@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "incremental": true,
+    "allowJs": false,
+    "baseUrl": ".",
+    "declaration": true,
+    "jsx": "react",
+    "lib": ["dom", "es2015", "esnext"],
+    "module": "commonjs",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "dist/ts",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "removeComments": true,
+    "sourceMap": true
+  },
+  "exclude": ["dist", "__tests__"]
+}
