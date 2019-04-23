@@ -1,22 +1,23 @@
-import App, { client } from "@/utils/app";
 import express from "express";
+import "isomorphic-fetch";
 import React from "react";
 import { renderToStringWithData } from "react-apollo";
 import { renderToStaticMarkup } from "react-dom/server";
+import App, { client } from "./utils/app";
 
 const server = express();
 
 const Html = ({ content, state }) => {
-    return (
-        <html>
-        <body>
-            <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
-            <script
-              dangerouslySetInnerHTML={{ __html: `window.__APOLLO_STATE__=${JSON.stringify(state).replace(/</g, "\\u003c")};` }}
-            />
-        </body>
-        </html>
-    );
+  return (
+    <html>
+    <body>
+      <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
+      <script
+        dangerouslySetInnerHTML={{ __html: `window.__APOLLO_STATE__=${JSON.stringify(state).replace(/</g, "\\u003c")};` }}
+      />
+    </body>
+    </html>
+  );
 };
 
 server

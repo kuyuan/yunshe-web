@@ -1,6 +1,6 @@
-import Button from "@/components/Button";
-import Demo from "@/components/Demo";
 import React from "react";
+import Button from "../components/Button";
+import Demo from "../components/Demo";
 
 class HomePage extends React.Component {
   public render() {

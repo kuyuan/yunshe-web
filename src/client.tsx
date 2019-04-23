@@ -1,6 +1,6 @@
-import App from "@/utils/app";
 import React from "react";
 import ReactDOM from "react-dom";
+import App from "./utils/app";
 
 ReactDOM.hydrate(
   App,

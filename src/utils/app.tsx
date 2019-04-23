@@ -1,7 +1,7 @@
-import Entry from "@/pages/HomePage";
-import { createClient } from "@/utils/apollo";
 import React from "react";
 import { ApolloProvider } from "react-apollo";
+import Entry from "../pages/HomePage";
+import { createClient } from "./apollo";
 
 export const client = createClient();
 
