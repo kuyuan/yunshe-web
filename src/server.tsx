@@ -1,25 +1,35 @@
-import React from 'react'
-import * as express from "express";
-import Html from "@/pages/Html";
+import App, { client } from "@/utils/app";
+import express from "express";
+import React from "react";
+import { renderToStringWithData } from "react-apollo";
+import { renderToStaticMarkup } from "react-dom/server";
 
 const server = express();
+
+const Html = ({ content, state }) => {
+    return (
+        <html>
+        <body>
+            <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
+            <script
+              dangerouslySetInnerHTML={{ __html: `window.__APOLLO_STATE__=${JSON.stringify(state).replace(/</g, "\\u003c")};` }}
+            />
+        </body>
+        </html>
+    );
+};
+
 server
   .disable("x-powered-by")
-  .get("/*", (req, res) => {
-      res.status(200).send(
-        `<!doctype html>
-    <html lang="">
-    <head>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta charset="utf-8" />
-        <title>Welcome to Razzle</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
-        <div id="root">Hello world</div>
-    </body>
-</html>`,
-      );
+  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .get("/*", async (req, res) => {
+    const content = await renderToStringWithData(App);
+    const initialState = client.extract();
+    const html = <Html content={content} state={initialState} />;
+
+    res.status(200);
+    res.send(`<!doctype html>\n${renderToStaticMarkup(html)}`);
+    res.end();
   });
 
 export default server;

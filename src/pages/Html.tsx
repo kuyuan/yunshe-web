@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import { HelmetData } from "react-helmet";
 
 export interface HtmlProps {
   css?: string;
   helmet: HelmetData;
-  html: string;
+  content: string;
   scripts: string[];
   styles?: Array<React.ReactElement<{}>>;
   window?: {
@@ -12,7 +12,7 @@ export interface HtmlProps {
   };
 }
 
-export default ({ css, helmet, html, scripts, styles, window = {} }: HtmlProps) => (
+export default ({ css, helmet, content, scripts, styles, window = {} }: HtmlProps) => (
   <html
     lang="en"
     prefix="og: http://ogp.me/ns#"
@@ -33,19 +33,19 @@ export default ({ css, helmet, html, scripts, styles, window = {} }: HtmlProps) 
       {helmet.noscript.toComponent()}
     </head>
     <body {...helmet.bodyAttributes.toComponent()}>
-      <div id="root" dangerouslySetInnerHTML={{ __html: html }} />
+      <div id="root" dangerouslySetInnerHTML={{ __html: content }} />
       <script
         dangerouslySetInnerHTML={{
           __html: Object.keys(window).reduce(
             (out, key) =>
               (out += `window.${key}=${JSON.stringify(window[key])};`),
-            ""
-          )
+            "",
+          ),
         }}
       />
     </body>
-    {scripts.map(script => (
+    {scripts.map((script) => (
       <script key={script} src={script} />
     ))}
   </html>
-)
+);
