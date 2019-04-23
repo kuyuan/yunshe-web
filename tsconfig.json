@@ -4,6 +4,7 @@
     "allowJs": false,
     "baseUrl": ".",
     "declaration": true,
+    "esModuleInterop": true,
     "jsx": "react",
     "lib": ["dom", "es2015", "esnext"],
     "module": "commonjs",
@@ -14,5 +15,5 @@
     "removeComments": true,
     "sourceMap": true
   },
-  "exclude": ["dist", "__tests__", "razzle.config.js"]
+  "exclude": ["dist", "razzle.config.js"]
 }
