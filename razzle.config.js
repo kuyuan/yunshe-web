@@ -1,5 +1,5 @@
-'use strict';
+const path = require('path');
 
 module.exports = {
-  plugins: ['typescript'],
+  plugins: [ 'typescript' ]
 };
