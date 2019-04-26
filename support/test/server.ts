@@ -6,4 +6,6 @@ const server = new ApolloServer({
   mocks: true,
 });
 
-export default server;
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`)
+});
