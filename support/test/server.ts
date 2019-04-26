@@ -3,7 +3,7 @@ import typeDefs from "../typeDefs";
 
 const server = new ApolloServer({
   typeDefs,
-  mocks: true
-})
+  mocks: true,
+});
 
 export default server;
