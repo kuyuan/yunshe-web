@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
     "allowJs": false,
-    "baseUrl": ".",
     "declaration": true,
     "esModuleInterop": true,
     "jsx": "react",
     "lib": ["dom", "es2015", "esnext"],
     "module": "commonjs",
     "outDir": "dist/ts",
+    "rootDirs": ["src", "stories"],
+    "baseUrl": "src",
     "removeComments": true,
     "sourceMap": true
   },
-  "exclude": ["dist", "razzle.config.js"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build", "dist"]
 }
