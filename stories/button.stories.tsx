@@ -1,8 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { withKnobs, boolean } from '@storybook/addon-knobs';
 import Button from '../src/components/Button';
 
 storiesOf('Button', module)
+  .addDecorator(withKnobs)
   .add('Default', () => (
     <Button kind='default'>Default</Button>
   ))
@@ -29,4 +31,7 @@ storiesOf('Button', module)
   ))
   .add('Hyper Link Button', () => (
     <Button kind='default' href='http://www.google.com'>Google</Button>
+  ))
+  .add('Disabled Primary', () => (
+    <Button kind='primary' disabled={boolean('disabled', true)}>Disabled</Button>
   ))
