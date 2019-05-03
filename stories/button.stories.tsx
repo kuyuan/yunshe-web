@@ -27,3 +27,6 @@ storiesOf('Button', module)
   .add('Text', () => (
     <Button kind='text'>Text Button</Button>
   ))
+  .add('Hyper Link Button', () => (
+    <Button kind='default' href='http://www.google.com'>Google</Button>
+  ))
