@@ -39,4 +39,4 @@ export const hexa = (hex: string, alpha: number = -1) => {
 
 export const Gradient = (g1: string, g2: string) => {
   return `radial-gradient(ellipse farthest-corner at top left, ${g1} 0%, ${g2} 100%)`;
-}
+};

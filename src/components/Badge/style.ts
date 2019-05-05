@@ -1,5 +1,5 @@
+import styled from "styled-components";
 import theme from "../../theme";
-import styled from 'styled-components';
 import { Gradient } from "../../utils/color";
 
 export const Span = styled.span`
