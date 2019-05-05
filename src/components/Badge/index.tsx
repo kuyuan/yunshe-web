@@ -1,6 +1,6 @@
 import React from "react";
-import { BlockedBadge, PendingBadge, ProBadge, Span, TeamBadge } from "./style";
 import Tooltip from "../Tooltip";
+import { BlockedBadge, PendingBadge, ProBadge, Span, TeamBadge } from "./style";
 
 export interface BadgeProps {
   kind: "blocked" | "pending" | "moderator" | "admin" | "pro" | "default";
@@ -34,7 +34,7 @@ const Badge = (props: BadgeProps): React.ReactElement => {
     >
       {label || kind}
     </Component>
-  )
+  );
   if (tipText) {
     return (
       <Tooltip content={tipText}>
@@ -42,7 +42,7 @@ const Badge = (props: BadgeProps): React.ReactElement => {
           {BaseComponent}
         </span>
       </Tooltip>
-    )
+    );
   } else {
     return BaseComponent;
   }
