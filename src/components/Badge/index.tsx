@@ -8,7 +8,7 @@ export interface BadgeProps {
 }
 
 const Badge = (props: BadgeProps): React.ReactElement => {
-  const { kind, label, onClick, ...rest } = props;
+  const { kind, label, onClick } = props;
   let Component = Span;
   switch (kind) {
     case "pro":
@@ -29,7 +29,6 @@ const Badge = (props: BadgeProps): React.ReactElement => {
     <Component
       onClick={onClick}
       kind="default"
-      {...rest}
     >
       {label || kind}
     </Component>
