@@ -1,5 +1,5 @@
-import React from 'react';
-import Tippy from '@tippy.js/react';
+import Tippy from "@tippy.js/react";
+import React from "react";
 
 interface TipProps {
   content: string;
@@ -13,23 +13,23 @@ const Tip = (props: TipProps) => {
       placement="top"
       touch={false}
       arrow={true}
-      arrowType={'round'}
+      arrowType={"round"}
       content={
-        <span style={{ fontSize: '14px', fontWeight: 600 }}>
+        <span style={{ fontSize: "14px", fontWeight: 600 }}>
           {content}
         </span>
       }
       popperOptions={{
         modifiers: {
           preventOverflow: {
-            boundariesElement: 'window',
+            boundariesElement: "window",
           },
         },
       }}
     >
       {children}
     </Tippy>
-  )
-}
+  );
+};
 
 export default Tip;
