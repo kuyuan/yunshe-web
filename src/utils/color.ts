@@ -1,3 +1,5 @@
+import { css } from "styled-components";
+
 export const tint = (hex: string, amount: number) => {
   let R = parseInt(hex.substring(1, 3), 16);
   let G = parseInt(hex.substring(3, 5), 16);
@@ -25,7 +27,7 @@ export const tint = (hex: string, amount: number) => {
   return `#${RR}${GG}${BB}`;
 };
 
-export const hexa = (hex: string, alpha: number) => {
+export const hexa = (hex: string, alpha: number = -1) => {
   const r = parseInt(hex.slice(1, 3), 16);
   const g = parseInt(hex.slice(3, 5), 16);
   const b = parseInt(hex.slice(5, 7), 16);
@@ -35,4 +37,8 @@ export const hexa = (hex: string, alpha: number) => {
   } else {
     return `rgb(${r}, ${g}, ${b})`;
   }
+};
+
+export const Gradient = (g1: string, g2: string) => {
+  return `radial-gradient(ellipse farthest-corner at top left, ${g1} 0%, ${g2} 100%)`;
 };

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import theme from "../../theme";
 import { hexa, tint } from "../../utils/color";
-import { ButtonProps } from "../Button";
+import { ButtonProps } from "./index";
 
 export const A = styled.a`
   display: flex;
