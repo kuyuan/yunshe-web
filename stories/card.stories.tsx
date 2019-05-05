@@ -6,7 +6,7 @@ const avatarImg = require('../support/assets/avatar.jpg');
 
 storiesOf('Card', module)
   .add('Default', () => (
-    <Card style={{width: '300px'}}>
+    <Card style={{width: '350px'}}>
       <img src={avatarImg} alt='avatar' />
     </Card>
   ))
