@@ -15,6 +15,9 @@ storiesOf('Badge', module)
   .add('With onClick action', () => (
     <Badge kind='default' onClick={action('badge click')} />
   ))
+  .add('With tooltip', () => (
+    <Badge kind='default' tipText='Default badge XD' />
+  ))
   .add('Pro', () => (
     <Badge kind='pro' />
   ))

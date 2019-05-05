@@ -1,14 +1,16 @@
 import React from "react";
 import { BlockedBadge, PendingBadge, ProBadge, Span, TeamBadge } from "./style";
+import Tooltip from "../Tooltip";
 
 export interface BadgeProps {
   kind: "blocked" | "pending" | "moderator" | "admin" | "pro" | "default";
   label?: string;
+  tipText?: string;
   onClick?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const Badge = (props: BadgeProps): React.ReactElement => {
-  const { kind, label, onClick } = props;
+  const { kind, label, onClick, tipText } = props;
   let Component = Span;
   switch (kind) {
     case "pro":
@@ -25,15 +27,25 @@ const Badge = (props: BadgeProps): React.ReactElement => {
       Component = TeamBadge;
       break;
   }
-  return (
+  const BaseComponent = (
     <Component
       onClick={onClick}
       kind="default"
     >
       {label || kind}
     </Component>
-  );
-
+  )
+  if (tipText) {
+    return (
+      <Tooltip content={tipText}>
+        <span>
+          {BaseComponent}
+        </span>
+      </Tooltip>
+    )
+  } else {
+    return BaseComponent;
+  }
 };
 
 export default Badge;
