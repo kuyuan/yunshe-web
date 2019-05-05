@@ -1,3 +1,5 @@
+import { css } from 'styled-components';
+
 export const tint = (hex: string, amount: number) => {
   let R = parseInt(hex.substring(1, 3), 16);
   let G = parseInt(hex.substring(3, 5), 16);

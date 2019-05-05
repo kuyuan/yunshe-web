@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import theme from "../../theme";
 import { Gradient } from "../../utils/color";
+import { BadgeProps } from "./index";
 
 export const Span = styled.span`
   display: inline-block;
@@ -17,6 +18,7 @@ export const Span = styled.span`
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.16);
   align-items: center;
   align-self: center;
+  cursor: ${(p: BadgeProps) => p.onClick ? 'pointer' : 'default'};
 `;
 
 export const ProBadge = styled(Span)`
