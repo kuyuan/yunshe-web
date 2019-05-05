@@ -28,7 +28,7 @@ const Badge = (props: BadgeProps): React.ReactElement => {
   return (
     <Component
       onClick={onClick}
-      kind='default'
+      kind="default"
       {...rest}
     >
       {label || kind}

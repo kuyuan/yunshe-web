@@ -1,4 +1,4 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
 export const tint = (hex: string, amount: number) => {
   let R = parseInt(hex.substring(1, 3), 16);

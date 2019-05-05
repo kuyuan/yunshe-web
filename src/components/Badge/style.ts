@@ -18,7 +18,7 @@ export const Span = styled.span`
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.16);
   align-items: center;
   align-self: center;
-  cursor: ${(p: BadgeProps) => p.onClick ? 'pointer' : 'default'};
+  cursor: ${(p: BadgeProps) => p.onClick ? "pointer" : "default"};
 `;
 
 export const ProBadge = styled(Span)`
