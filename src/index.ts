@@ -1,6 +1,5 @@
 import express from "express";
 
-// tslint:disable-next-line:no-var-requires
 let app = require("./server").default;
 
 if (module.hot) {
