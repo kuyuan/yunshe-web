@@ -1,5 +1,10 @@
 import React from "react";
+import Icon from "../Icon";
 import {
+  InputOverlay,
+  PhotoInputImage,
+  PhotoInputLabel,
+  StyledHiddenInput,
   StyledInput,
   StyledLabel,
 } from "./style";
@@ -38,5 +43,50 @@ export const Input = (props: InputProps) => {
         disabled={disabled}
       />
     </StyledLabel>
+  );
+};
+
+export interface PhotoInputProps {
+  size?: number;
+  type: "user" | "community";
+  defaultValue?: string;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const PhotoInput = (props: PhotoInputProps) => {
+  const { size = 48, type, defaultValue, onChange } = props;
+
+  let visible: boolean;
+  let src = defaultValue;
+  if (!src || src.length === 0) {
+    visible = true;
+    src =
+      type === "user"
+        ? "https://yunshe-prod-1256437689.cos.ap-shanghai.myqcloud.com/default/avatar.svg"
+        : "https://yunshe-prod-1256437689.cos.ap-shanghai.myqcloud.com/default/community.svg";
+  }
+
+  return (
+    <PhotoInputLabel type={type} size={size}>
+      <InputOverlay type={type} size={size} visible={visible}>
+        <Icon glyph="photo" />
+      </InputOverlay>
+
+      <PhotoInputImage
+        type={type}
+        alt={"Profile photo"}
+        src={src}
+        size={size}
+      />
+
+      <StyledHiddenInput
+        type="file"
+        id="file"
+        name="file"
+        accept={".png, .jpg, .jpeg"}
+        multiple={false}
+        onChange={onChange}
+      />
+    </PhotoInputLabel>
   );
 };
