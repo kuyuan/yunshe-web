@@ -7,6 +7,7 @@ import {
   InputOverlay,
   PhotoInputImage,
   PhotoInputLabel,
+  StyledCheckboxWrapper,
   StyledHiddenInput,
   StyledInput,
   StyledLabel,
@@ -23,7 +24,6 @@ export interface InputProps {
   placeholder?: string;
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
   autoFocus?: boolean;
-  checked?: boolean;
   disabled?: boolean;
   id?: string;
   size?: number;
@@ -33,10 +33,9 @@ export interface InputProps {
 export const Input = (props: InputProps) => {
   const {
     children, id, inputType, defaultValue, value, placeholder, onChange, autoFocus, disabled,
-    ...rest
   } = props;
   return (
-    <StyledLabel {...rest}>
+    <StyledLabel>
       {children}
       <StyledInput
         id={id}
@@ -123,5 +122,31 @@ export const CoverInput = (props: CoverPhotoInputProps) => {
         onChange={props.onChange}
       />
     </CoverInputLabel>
+  );
+};
+
+export interface CheckboxProps extends InputProps {
+  align?: string;
+  checked?: boolean;
+}
+
+export const Checkbox = (props: CheckboxProps) => {
+  return (
+    <StyledLabel>
+      <StyledCheckboxWrapper
+        disabled={props.disabled || false}
+        align={props.align || "center"}
+      >
+        {props.checked ? <Icon glyph="checkmark" /> : <Icon glyph="checkbox" />}
+        <StyledHiddenInput
+          type="checkbox"
+          id={props.id}
+          checked={props.checked}
+          disabled={props.disabled || false}
+          onChange={props.onChange}
+        />
+        {props.children}
+      </StyledCheckboxWrapper>
+    </StyledLabel>
   );
 };

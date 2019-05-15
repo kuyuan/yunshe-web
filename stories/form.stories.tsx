@@ -4,6 +4,7 @@ import {
   Input,
   PhotoInput,
   CoverInput,
+  Checkbox,
 } from '../src/components/Form';
 import { ImageInputWrapper } from '../src/components/Form/style';
 
@@ -42,4 +43,10 @@ storiesOf('Form', module)
         onChange={(e) => console.log(e.target.files[0])}
       />
     </ImageInputWrapper>
+  ))
+  .add('Checkbox(unchecked)', () => (
+    <Checkbox />
+  ))
+  .add('Checkbox(checked)', () => (
+    <Checkbox checked />
   ))

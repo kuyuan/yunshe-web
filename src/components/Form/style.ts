@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import theme from "../../theme";
 import { hexa } from "../../utils/color";
-import { FlexCol, Transition, zIndex } from "../globals";
-import { InputProps, PhotoInputProps } from "./index";
+import { FlexCol, FlexRow, Transition, zIndex } from "../globals";
+import { CheckboxProps, InputProps, PhotoInputProps } from "./index";
 
 export const StyledLabel = styled.label`
   display: flex;
@@ -168,4 +168,37 @@ export const CoverImage = styled.div`
   width: 100%;
   height: 114px;
   border-radius: 8px;
+`;
+
+export const StyledCheckboxWrapper = styled(FlexRow)`
+  color: ${theme.text.alt};
+  display: flex;
+  align-items: ${(p: CheckboxProps) => p.align};
+  line-height: 1.4;
+  cursor: ${(p: CheckboxProps) => (p.disabled ? "not-allowed" : "pointer")};
+
+  &:hover {
+    color: ${(p: CheckboxProps) => (p.disabled ? theme.text.alt : theme.brand.alt)};
+  }
+
+  > div {
+    margin-left: -6px;
+    margin-right: 6px;
+  }
+
+  > a {
+    text-decoration: none;
+    color: ${theme.brand.alt};
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    position: relative;
+    padding-bottom: 0px;
+    transition: ${Transition.hover.off};
+
+    &:hover {
+      border-bottom: 2px solid ${theme.brand.alt};
+      padding-bottom: 2px;
+      transition: ${Transition.hover.on};
+    }
+  }
 `;
