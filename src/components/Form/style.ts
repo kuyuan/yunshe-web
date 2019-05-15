@@ -1,7 +1,8 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import theme from "../../theme";
-import { Transition } from "../globals";
-import { InputProps } from "./index";
+import { hexa } from "../../utils/color";
+import { FlexCol, Transition, zIndex } from "../globals";
+import { InputProps, PhotoInputProps } from "./index";
 
 export const StyledLabel = styled.label`
   display: flex;
@@ -58,4 +59,81 @@ export const StyledInput = styled.input`
     border-color: ${theme.brand.default};
     transition: ${Transition.hover.on};
   }
+`;
+
+export const ImageInputWrapper = styled(FlexCol)`
+  position: relative;
+  flex: 0 0 auto;
+  margin-top: 8px;
+  margin-bottom: 24px;
+  max-width: 342px;
+
+  > label:nth-of-type(2) {
+    position: absolute;
+    bottom: -24px;
+    left: 16px;
+  }
+`;
+
+export const PhotoInputLabel = styled.label`
+  position: relative;
+  height: ${(p: PhotoInputProps) => `${p.size}px`};
+  z-index: ${zIndex.form + 1};
+  width: ${(p: PhotoInputProps) => `${p.size}px`};
+  border-radius: ${(p: PhotoInputProps) => p.type === "user" ? `${p.size}px` : "8px"};
+  margin-top: 8px;
+  background-color: ${theme.bg.reverse};
+`;
+
+export const PhotoInputImage = styled.img`
+  width: ${(p: PhotoInputProps) => `${p.size}px`};
+  height: ${(p: PhotoInputProps) => `${p.size}px`};
+  border-radius: ${(p: PhotoInputProps) => p.type === "user" ? `${p.size}px` : "8px"};
+  box-shadow: 0 0 0 2px ${theme.bg.default};
+`;
+
+interface InputOverlayProps {
+  type: "user" | "community";
+  visible: boolean;
+  size: number;
+}
+
+export const InputOverlay = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: ${zIndex.form + 2};
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: ${theme.text.reverse};
+  background-color: ${hexa(theme.bg.reverse, 0.6)};
+  border-radius: ${(p: InputOverlayProps) => p.type === "user" ? `${p.size}px` : "8px"};
+  opacity: ${(p: InputOverlayProps) => (p.visible ? "1" : "0")};
+  transition: ${Transition.hover.off};
+
+  &:hover {
+    opacity: 1;
+    transition: ${Transition.hover.on};
+
+    + img,
+    + div {
+      transition: ${Transition.hover.on};
+      opacity: 0.25;
+    }
+  }
+
+  &:hover div {
+    transition: ${Transition.hover.on};
+  }
+`;
+
+export const StyledHiddenInput = styled.input`
+  visibility: hidden;
+  width: 0;
+  height: 0;
 `;

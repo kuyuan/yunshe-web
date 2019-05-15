@@ -1,8 +1,16 @@
 import React from "react";
+import Icon from "../Icon";
 import {
+  InputOverlay,
+  PhotoInputImage,
+  PhotoInputLabel,
+  StyledHiddenInput,
   StyledInput,
   StyledLabel,
 } from "./style";
+
+const defaultAvatar = require("./img/default_avatar.svg");
+const defaultCommunityCover = require("./img/default_community.svg");
 
 export interface InputProps {
   children?: any;
@@ -38,5 +46,50 @@ export const Input = (props: InputProps) => {
         disabled={disabled}
       />
     </StyledLabel>
+  );
+};
+
+export interface PhotoInputProps {
+  size?: number;
+  type: "user" | "community";
+  defaultValue?: string;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+export const PhotoInput = (props: PhotoInputProps) => {
+  const { size = 48, type, defaultValue, onChange } = props;
+
+  let visible: boolean;
+  let src = defaultValue;
+  if (!src || src.length === 0) {
+    visible = true;
+    src = defaultCommunityCover;
+    if (type === "user") {
+      src = defaultAvatar;
+    }
+  }
+
+  return (
+    <PhotoInputLabel type={type} size={size}>
+      <InputOverlay type={type} size={size} visible={visible}>
+        <Icon glyph="photo" />
+      </InputOverlay>
+
+      <PhotoInputImage
+        type={type}
+        alt={"Profile photo"}
+        src={src}
+        size={size}
+      />
+
+      <StyledHiddenInput
+        type="file"
+        id="file"
+        name="file"
+        accept={".png, .jpg, .jpeg"}
+        multiple={false}
+        onChange={onChange}
+      />
+    </PhotoInputLabel>
   );
 };
