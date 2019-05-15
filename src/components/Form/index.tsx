@@ -1,6 +1,9 @@
 import React from "react";
+import Button from "../Button";
 import Icon from "../Icon";
 import {
+  CoverImage,
+  CoverInputLabel,
   InputOverlay,
   PhotoInputImage,
   PhotoInputLabel,
@@ -91,5 +94,34 @@ export const PhotoInput = (props: PhotoInputProps) => {
         onChange={onChange}
       />
     </PhotoInputLabel>
+  );
+};
+
+export interface CoverPhotoInputProps {
+  defaultValue?: string;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
+  allowGif?: boolean;
+}
+
+export const CoverInput = (props: CoverPhotoInputProps) => {
+  return (
+    <CoverInputLabel>
+      <InputOverlay visible={!props.defaultValue}>
+        <Button as="div" kind="light-outline">Add Cover Photo</Button>
+      </InputOverlay>
+      <CoverImage
+        src={props.defaultValue ? `${props.defaultValue}` : ""}
+      />
+      <StyledHiddenInput
+        type="file"
+        id="file"
+        name="file"
+        accept={
+          props.allowGif ? ".png, .jpg, .jpeg, .gif, .mp4" : ".png, .jpg, .jpeg"
+        }
+        multiple={false}
+        onChange={props.onChange}
+      />
+    </CoverInputLabel>
   );
 };

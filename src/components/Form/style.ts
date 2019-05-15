@@ -93,9 +93,9 @@ export const PhotoInputImage = styled.img`
 `;
 
 interface InputOverlayProps {
-  type: "user" | "community";
-  visible: boolean;
-  size: number;
+  type?: "user" | "community";
+  visible?: boolean;
+  size?: number;
 }
 
 export const InputOverlay = styled.div`
@@ -119,6 +119,7 @@ export const InputOverlay = styled.div`
   &:hover {
     opacity: 1;
     transition: ${Transition.hover.on};
+    cursor: pointer;
 
     + img,
     + div {
@@ -136,4 +137,35 @@ export const StyledHiddenInput = styled.input`
   visibility: hidden;
   width: 0;
   height: 0;
+`;
+
+export const CoverInputLabel = styled.label`
+  position: relative;
+  height: 114px;
+  max-width: 342px;
+  z-index: ${zIndex.form};
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 8px;
+  background-color: ${theme.bg.reverse};
+`;
+
+interface CoverImageProps {
+  src: string;
+}
+
+export const CoverImage = styled.div`
+  background-color: ${theme.brand.default};
+  background-image: url('${(p: CoverImageProps) => p.src}');
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  z-index: ${zIndex.form};
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 114px;
+  border-radius: 8px;
 `;
