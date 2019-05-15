@@ -9,6 +9,9 @@ import {
   StyledLabel,
 } from "./style";
 
+const defaultAvatar = require('./img/default_avatar.svg');
+const defaultCommunityCover = require('./img/default_community.svg');
+
 export interface InputProps {
   children?: any;
   inputType?: "text" | "number" | "password";
@@ -60,10 +63,10 @@ export const PhotoInput = (props: PhotoInputProps) => {
   let src = defaultValue;
   if (!src || src.length === 0) {
     visible = true;
-    src =
-      type === "user"
-        ? "https://yunshe-prod-1256437689.cos.ap-shanghai.myqcloud.com/default/avatar.svg"
-        : "https://yunshe-prod-1256437689.cos.ap-shanghai.myqcloud.com/default/community.svg";
+    src = defaultCommunityCover;
+    if (type === "user") {
+      src = defaultAvatar;
+    }
   }
 
   return (

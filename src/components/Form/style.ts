@@ -112,7 +112,6 @@ export const InputOverlay = styled.div`
   height: 100%;
   color: ${theme.text.reverse};
   background-color: ${hexa(theme.bg.reverse, 0.6)};
-  padding: 8px;
   border-radius: ${(p: InputOverlayProps) => p.type === "user" ? `${p.size}px` : "8px"};
   opacity: ${(p: InputOverlayProps) => (p.visible ? "1" : "0")};
   transition: ${Transition.hover.off};
