@@ -1,3 +1,4 @@
+import TextArea from "react-textarea-autosize";
 import styled from "styled-components";
 import theme from "../../theme";
 import { hexa } from "../../utils/color";
@@ -200,5 +201,37 @@ export const StyledCheckboxWrapper = styled(FlexRow)`
       padding-bottom: 2px;
       transition: ${Transition.hover.on};
     }
+  }
+`;
+
+export const StyledTextArea = styled(TextArea)`
+  flex: 1 0 auto;
+  width: 100%;
+  background: ${theme.bg.default};
+  font-weight: 500;
+  font-size: 14px;
+  border: 2px solid ${theme.bg.inactive};
+  border-radius: 4px;
+  padding: 12px;
+  margin-top: 2px;
+  box-shadow: none;
+  transition: ${Transition.hover.off};
+
+  &::placeholder {
+    color: ${theme.text.placeholder};
+  }
+  &::-webkit-input-placeholder {
+    color: ${theme.text.placeholder};
+  }
+  &:-moz-placeholder {
+    color: ${theme.text.placeholder};
+  }
+  &:-ms-input-placeholder {
+    color: ${theme.text.placeholder};
+  }
+
+  &:focus {
+    border-color: ${theme.brand.default};
+    transition: ${Transition.hover.on};
   }
 `;

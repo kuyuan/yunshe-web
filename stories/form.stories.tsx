@@ -5,6 +5,7 @@ import {
   PhotoInput,
   CoverInput,
   Checkbox,
+  TextArea,
 } from '../src/components/Form';
 import { ImageInputWrapper } from '../src/components/Form/style';
 
@@ -49,4 +50,7 @@ storiesOf('Form', module)
   ))
   .add('Checkbox(checked)', () => (
     <Checkbox checked />
+  ))
+  .add('Textarea', () => (
+    <TextArea />
   ))

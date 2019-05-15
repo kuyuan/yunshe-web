@@ -11,6 +11,7 @@ import {
   StyledHiddenInput,
   StyledInput,
   StyledLabel,
+  StyledTextArea,
 } from "./style";
 
 const defaultAvatar = require("./img/default_avatar.svg");
@@ -147,6 +148,21 @@ export const Checkbox = (props: CheckboxProps) => {
         />
         {props.children}
       </StyledCheckboxWrapper>
+    </StyledLabel>
+  );
+};
+
+export const TextArea = (props: InputProps) => {
+  return (
+    <StyledLabel>
+      {props.children}
+      <StyledTextArea
+        id={props.id}
+        placeholder={props.placeholder}
+        defaultValue={props.defaultValue}
+        onChange={props.onChange}
+        autoFocus={props.autoFocus}
+      />
     </StyledLabel>
   );
 };
