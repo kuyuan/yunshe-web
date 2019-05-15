@@ -9,8 +9,8 @@ import {
   StyledLabel,
 } from "./style";
 
-const defaultAvatar = require('./img/default_avatar.svg');
-const defaultCommunityCover = require('./img/default_community.svg');
+const defaultAvatar = require("./img/default_avatar.svg");
+const defaultCommunityCover = require("./img/default_community.svg");
 
 export interface InputProps {
   children?: any;
