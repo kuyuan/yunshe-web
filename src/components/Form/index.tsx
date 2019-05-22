@@ -1,12 +1,19 @@
 import React from "react";
+import Button from "../Button";
 import Icon from "../Icon";
 import {
+  CoverImage,
+  CoverInputLabel,
   InputOverlay,
   PhotoInputImage,
   PhotoInputLabel,
+  StyledCheckboxWrapper,
   StyledHiddenInput,
   StyledInput,
   StyledLabel,
+  StyledPrefixLabel,
+  StyledTextArea,
+  StyledUnderlineInput,
 } from "./style";
 
 const defaultAvatar = require("./img/default_avatar.svg");
@@ -20,7 +27,6 @@ export interface InputProps {
   placeholder?: string;
   onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
   autoFocus?: boolean;
-  checked?: boolean;
   disabled?: boolean;
   id?: string;
   size?: number;
@@ -30,10 +36,9 @@ export interface InputProps {
 export const Input = (props: InputProps) => {
   const {
     children, id, inputType, defaultValue, value, placeholder, onChange, autoFocus, disabled,
-    ...rest
   } = props;
   return (
-    <StyledLabel {...rest}>
+    <StyledLabel>
       {children}
       <StyledInput
         id={id}
@@ -91,5 +96,92 @@ export const PhotoInput = (props: PhotoInputProps) => {
         onChange={onChange}
       />
     </PhotoInputLabel>
+  );
+};
+
+export interface CoverPhotoInputProps {
+  defaultValue?: string;
+  onChange?: (ev: React.ChangeEvent<HTMLInputElement>) => void;
+  allowGif?: boolean;
+}
+
+export const CoverInput = (props: CoverPhotoInputProps) => {
+  return (
+    <CoverInputLabel>
+      <InputOverlay visible={!props.defaultValue}>
+        <Button as="div" kind="light-outline">Add Cover Photo</Button>
+      </InputOverlay>
+      <CoverImage
+        src={props.defaultValue ? `${props.defaultValue}` : ""}
+      />
+      <StyledHiddenInput
+        type="file"
+        id="file"
+        name="file"
+        accept={
+          props.allowGif ? ".png, .jpg, .jpeg, .gif, .mp4" : ".png, .jpg, .jpeg"
+        }
+        multiple={false}
+        onChange={props.onChange}
+      />
+    </CoverInputLabel>
+  );
+};
+
+export interface CheckboxProps extends InputProps {
+  align?: string;
+  checked?: boolean;
+}
+
+export const Checkbox = (props: CheckboxProps) => {
+  return (
+    <StyledLabel>
+      <StyledCheckboxWrapper
+        disabled={props.disabled || false}
+        align={props.align || "center"}
+      >
+        {props.checked ? <Icon glyph="checkmark" /> : <Icon glyph="checkbox" />}
+        <StyledHiddenInput
+          type="checkbox"
+          id={props.id}
+          checked={props.checked}
+          disabled={props.disabled || false}
+          onChange={props.onChange}
+        />
+        {props.children}
+      </StyledCheckboxWrapper>
+    </StyledLabel>
+  );
+};
+
+export const TextArea = (props: InputProps) => {
+  return (
+    <StyledLabel>
+      {props.children}
+      <StyledTextArea
+        id={props.id}
+        placeholder={props.placeholder}
+        defaultValue={props.defaultValue}
+        onChange={props.onChange}
+        autoFocus={props.autoFocus}
+      />
+    </StyledLabel>
+  );
+};
+
+export const UnderlineInput = (props: InputProps) => {
+  return (
+    <StyledPrefixLabel disabled={props.disabled}>
+      {props.children}
+      <StyledUnderlineInput
+        type="text"
+        id={props.id}
+        placeholder={props.placeholder}
+        value={props.value || props.defaultValue}
+        onChange={props.onChange}
+        autoFocus={props.autoFocus}
+        disabled={props.disabled}
+      />
+    </StyledPrefixLabel>
   );
 };

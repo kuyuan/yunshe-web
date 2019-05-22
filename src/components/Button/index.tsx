@@ -39,10 +39,11 @@ export interface ButtonProps {
   to?: To;
   isLoading?: boolean;
   children?: any;
+  as?: "div";
 }
 
 const Button = (props: ButtonProps): React.ReactElement => {
-  const { kind, disabled, href, target, to, isLoading, children } = props;
+  const { kind, disabled, href, target, to, isLoading, children, as } = props;
   let Component = StyledWhiteButton;
   switch (kind) {
     case "primary":
@@ -71,7 +72,7 @@ const Button = (props: ButtonProps): React.ReactElement => {
       break;
   }
   const button = (
-    <Component disabled={disabled || isLoading}>
+    <Component as={as} disabled={disabled || isLoading}>
       {children}
     </Component>
   );

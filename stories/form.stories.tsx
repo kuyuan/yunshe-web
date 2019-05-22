@@ -2,7 +2,11 @@ import React from 'react';
 import { storiesOf } from '@storybook/react';
 import {
   Input,
-  PhotoInput
+  PhotoInput,
+  CoverInput,
+  Checkbox,
+  TextArea,
+  UnderlineInput
 } from '../src/components/Form';
 import { ImageInputWrapper } from '../src/components/Form/style';
 
@@ -27,11 +31,32 @@ storiesOf('Form', module)
       />
     </ImageInputWrapper>
   ))
-  .add('Community Cover Input', () => (
+  .add('Community Icon', () => (
     <ImageInputWrapper>
       <PhotoInput
         type='community'
         onChange={(e) => console.log(e.target.files[0])}
       />
     </ImageInputWrapper>
+  ))
+  .add('Community Cover', () => (
+    <ImageInputWrapper>
+      <CoverInput
+        onChange={(e) => console.log(e.target.files[0])}
+      />
+    </ImageInputWrapper>
+  ))
+  .add('Checkbox(unchecked)', () => (
+    <Checkbox />
+  ))
+  .add('Checkbox(checked)', () => (
+    <Checkbox checked />
+  ))
+  .add('Textarea', () => (
+    <TextArea />
+  ))
+  .add('Underline Input', () => (
+    <UnderlineInput defaultValue="BranLiang" disabled>
+      Hello
+    </UnderlineInput>
   ))
