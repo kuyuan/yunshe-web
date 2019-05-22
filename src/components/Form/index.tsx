@@ -11,9 +11,9 @@ import {
   StyledHiddenInput,
   StyledInput,
   StyledLabel,
-  StyledTextArea,
   StyledPrefixLabel,
-  StyledUnderlineInput
+  StyledTextArea,
+  StyledUnderlineInput,
 } from "./style";
 
 const defaultAvatar = require("./img/default_avatar.svg");
@@ -184,4 +184,4 @@ export const UnderlineInput = (props: InputProps) => {
       />
     </StyledPrefixLabel>
   );
-}
+};

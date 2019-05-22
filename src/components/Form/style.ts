@@ -260,12 +260,12 @@ export const StyledUnderlineInput = styled.input`
   font-size: inherit;
   font-weight: inherit;
   color: ${(p: InputProps) => p.disabled ? theme.text.alt : theme.text.default};
-  border-bottom: ${(p: InputProps) => p.disabled ? '2px solid transparent' : `2px solid ${theme.bg.inactive}`};
+  border-bottom: ${(p: InputProps) => p.disabled ? "2px solid transparent" : `2px solid ${theme.bg.inactive}`};
   width: 50%;
   transition: ${Transition.hover.off};
 
   &:hover {
-    border-color: ${(p: InputProps) => (p.disabled ? 'transparent' : 'inherit')};
+    border-color: ${(p: InputProps) => (p.disabled ? "transparent" : "inherit")};
     transition: ${Transition.hover.on};
   }
 
