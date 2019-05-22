@@ -6,6 +6,7 @@ import {
   CoverInput,
   Checkbox,
   TextArea,
+  UnderlineInput
 } from '../src/components/Form';
 import { ImageInputWrapper } from '../src/components/Form/style';
 
@@ -53,4 +54,9 @@ storiesOf('Form', module)
   ))
   .add('Textarea', () => (
     <TextArea />
+  ))
+  .add('Underline Input', () => (
+    <UnderlineInput defaultValue="BranLiang" disabled>
+      Hello
+    </UnderlineInput>
   ))

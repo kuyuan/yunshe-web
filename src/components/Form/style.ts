@@ -235,3 +235,42 @@ export const StyledTextArea = styled(TextArea)`
     transition: ${Transition.hover.on};
   }
 `;
+
+export const StyledPrefixLabel = styled.label`
+  display: flex;
+  width: 100%;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: ${theme.text.placeholder};
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  > input {
+    margin-left: 2px;
+  }
+
+  &:hover > input {
+    border-color: ${(p: InputProps) => p.disabled ? theme.bg.inactive : theme.text.alt};
+    transition: ${Transition.hover.on};
+  }
+`;
+
+export const StyledUnderlineInput = styled.input`
+  font-size: inherit;
+  font-weight: inherit;
+  color: ${(p: InputProps) => p.disabled ? theme.text.alt : theme.text.default};
+  border-bottom: ${(p: InputProps) => p.disabled ? '2px solid transparent' : `2px solid ${theme.bg.inactive}`};
+  width: 50%;
+  transition: ${Transition.hover.off};
+
+  &:hover {
+    border-color: ${(p: InputProps) => (p.disabled ? 'transparent' : 'inherit')};
+    transition: ${Transition.hover.on};
+  }
+
+  &:focus {
+    border-color: ${theme.brand.default};
+    transition: ${Transition.hover.on};
+  }
+`;

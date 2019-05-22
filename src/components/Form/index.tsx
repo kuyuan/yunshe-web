@@ -12,6 +12,8 @@ import {
   StyledInput,
   StyledLabel,
   StyledTextArea,
+  StyledPrefixLabel,
+  StyledUnderlineInput
 } from "./style";
 
 const defaultAvatar = require("./img/default_avatar.svg");
@@ -166,3 +168,20 @@ export const TextArea = (props: InputProps) => {
     </StyledLabel>
   );
 };
+
+export const UnderlineInput = (props: InputProps) => {
+  return (
+    <StyledPrefixLabel disabled={props.disabled}>
+      {props.children}
+      <StyledUnderlineInput
+        type="text"
+        id={props.id}
+        placeholder={props.placeholder}
+        value={props.value || props.defaultValue}
+        onChange={props.onChange}
+        autoFocus={props.autoFocus}
+        disabled={props.disabled}
+      />
+    </StyledPrefixLabel>
+  );
+}
