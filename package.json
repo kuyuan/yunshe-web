@@ -22,7 +22,7 @@
     "@tippy.js/react": "^2.1.2",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
-    "apollo-link-http": "^1.5.14",
+    "apollo-link-http": "^1.5.15",
     "express": "^4.16.4",
     "graphql": "^14.2.1",
     "graphql-tag": "^2.10.1",
