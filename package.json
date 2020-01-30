@@ -63,7 +63,7 @@
     "jest": "^24.7.1",
     "merge-graphql-schemas": "^1.5.8",
     "razzle-plugin-typescript": "^3.0.0",
-    "ts-jest": "^24.0.2",
+    "ts-jest": "^25.1.0",
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
     "tslint-react": "^4.0.0",
