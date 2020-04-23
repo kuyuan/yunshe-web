@@ -55,7 +55,7 @@
     "@types/react-router-dom": "^4.3.2",
     "@types/storybook__react": "^4.0.1",
     "@types/styled-components": "^4.1.14",
-    "@types/webpack-env": "^1.13.9",
+    "@types/webpack-env": "1.15.1",
     "apollo-server": "^2.4.8",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.5",
